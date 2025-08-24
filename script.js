@@ -9,7 +9,7 @@ function Book(author,title,pages,read,id) {
     this.pages = pages;
     this.read = read;
     this.id = id;
-};
+}
 
 function addBookToLibrary(author, title, pages, read) {
     let newBook = new Book(author, title, pages, read, crypto.randomUUID());
@@ -33,3 +33,15 @@ function displayBook() {
         }
     }
 }
+
+const dialog = document.querySelector('dialog');
+const showButton = document.querySelector('#showDialog');
+const closeButton = document.querySelector('dialog button');
+
+showButton.addEventListener('click', function() {
+    dialog.showModal();
+});
+
+closeButton.addEventListener('click', function() {
+    dialog.close();
+});
