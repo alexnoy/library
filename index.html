@@ -9,6 +9,32 @@
 <body>
     <div class="container">
         <div class="header">
+            <dialog>
+                <button>X</button>
+                <form action="" method="post" id="newBook">
+                    <p>
+                        <label>
+                            Author:
+                            <input type="text" id="author" name="author" required>
+                        </label>
+                        <label>
+                            Title:
+                            <input type="text" id="title" name="title" required>
+                        </label>
+                        <label>
+                            Pages:
+                            <input type="number" id="pages" name="pages" required>
+                        </label>
+                        <label>
+                            Completed:
+                            <input type="checkbox" id="read" name="read" value="Completed">
+                            <input type="hidden" id="notRead" name="read" value="Not Completed">
+                        </label>
+                        <input type="submit" id="submit" name="submit">
+                    </p>
+                </form>
+            </dialog>
+            <button id="showDialog">Add Book</button>
         </div>
         <div class="library">
         </div>
