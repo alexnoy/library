@@ -16,19 +16,26 @@ function addBookToLibrary(author, title, pages, read) {
     library.push(newBook);
 }
 
+const bookshelf = document.querySelector('.library');
+
 function displayBook() {
     for (const book of library) {
-        let bookshelf = document.querySelector('.library');
-        let card = document.createElement('div');
-        card.classList.add('books');
-        for (const info in book) {
-            if (info === 'id') {
-                continue;
+        if (document.querySelector(`div[data-id='${book.id}']`)) {
+            continue;
+        } else {
+            const card = document.createElement('div');
+            card.setAttribute('data-id', book.id);
+            card.classList.add('books');
+            for (const info in book) {
+                if (info === 'id') {
+                    continue;
+                }
+                const content = document.createElement('p');
+                const label = document.createTextNode(`${info.charAt(0).toUpperCase() + info.slice(1)}: `);
+                const text = document.createTextNode(book[info]);
+                content.append(label, text);
+                card.appendChild(content);
             }
-            let content = document.createElement('p');
-            let text = document.createTextNode(book[info]);
-            content.appendChild(text);
-            card.appendChild(content);
             bookshelf.appendChild(card);
         }
     }
