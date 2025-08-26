@@ -45,3 +45,18 @@ showButton.addEventListener('click', function() {
 closeButton.addEventListener('click', function() {
     dialog.close();
 });
+
+const form = document.getElementById('newBook');
+
+form.addEventListener('submit', function(event) {
+    event.preventDefault();
+    if (form.querySelector('#read').checked) {
+        form.querySelector('#notRead').disabled = true;
+    } else {
+        form.querySelector('#notRead').disabled = false;
+    }
+    const formData = Object.fromEntries(new FormData(form));
+    addBookToLibrary(formData.author, formData.title, formData.pages, formData.read);
+    form.reset();
+    displayBook();
+});
