@@ -24,6 +24,7 @@ function displayBook() {
             continue;
         } else {
             const card = document.createElement('div');
+            card.setAttribute('data-id', book.id);
             card.classList.add('books');
             for (const info in book) {
                 if (info === 'id') {
