@@ -1,18 +1,18 @@
 const library = [];
 
-function Book(author,title,pages,read,id) {
+function Book(author, title, pages, status,id) {
     if (!new.target) {
         throw Error("You must use 'new'")
     }
     this.author = author;
     this.title = title;
     this.pages = pages;
-    this.read = read;
+    this.status = status;
     this.id = id;
 }
 
-function addBookToLibrary(author, title, pages, read) {
-    let newBook = new Book(author, title, pages, read, crypto.randomUUID());
+function addBookToLibrary(author, title, pages, status) {
+    let newBook = new Book(author, title, pages, status, crypto.randomUUID());
     library.push(newBook);
 }
 
@@ -57,13 +57,13 @@ const form = document.getElementById('newBook');
 
 form.addEventListener('submit', function(event) {
     event.preventDefault();
-    if (form.querySelector('#read').checked) {
-        form.querySelector('#notRead').disabled = true;
+    if (form.querySelector('#status').checked) {
+        form.querySelector('#statusHidden').disabled = true;
     } else {
-        form.querySelector('#notRead').disabled = false;
+        form.querySelector('#statusHidden').disabled = false;
     }
     const formData = Object.fromEntries(new FormData(form));
-    addBookToLibrary(formData.author, formData.title, formData.pages, formData.read);
+    addBookToLibrary(formData.author, formData.title, formData.pages, formData.status);
     form.reset();
     displayBook();
 });
