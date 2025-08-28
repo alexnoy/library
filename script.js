@@ -59,13 +59,14 @@ closeButton.addEventListener('click', function() {
 });
 
 const form = document.getElementById('newBook');
+const notChecked = form.querySelector('#statusHidden');
 
 form.addEventListener('submit', function(event) {
     event.preventDefault();
     if (form.querySelector('#status').checked) {
-        form.querySelector('#statusHidden').disabled = true;
+        notChecked.disabled = true;
     } else {
-        form.querySelector('#statusHidden').disabled = false;
+        notChecked.disabled = false;
     }
     const formData = Object.fromEntries(new FormData(form));
     addBookToLibrary(formData.author, formData.title, formData.pages, formData.status);
