@@ -31,6 +31,8 @@ function displayBook() {
             const card = document.createElement('div');
             card.setAttribute('data-id', book.id);
             card.classList.add('books');
+            const removeButton = document.createElement('button');
+            removeButton.classList.add('remove');
             for (const info in book) {
                 if (info === 'id') {
                     continue;
@@ -41,6 +43,7 @@ function displayBook() {
                 content.append(label, text);
                 card.appendChild(content);
             }
+            card.appendChild(removeButton);
             bookshelf.appendChild(card);
         }
     }
