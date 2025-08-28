@@ -75,4 +75,25 @@ form.addEventListener('submit', function(event) {
     addBookToLibrary(formData.author, formData.title, formData.pages, formData.status);
     form.reset();
     displayBook();
+    removeBook();
 });
+
+const bookCards = document.getElementsByClassName('books');
+const removeButton = document.getElementsByClassName('remove');
+
+function removeBook() {
+    for (const card of bookCards) {
+        for (const button of removeButton) {
+            button.addEventListener('click', function() {
+                if (card.dataset.id === button.parentElement.dataset.id) {
+                    for (const book of library) {
+                        if (book.id === card.dataset.id) {
+                            library.splice(library.indexOf(book), 1);
+                        }
+                    }
+                    card.remove();
+                }
+            });
+        }
+    }
+}
