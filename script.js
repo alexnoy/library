@@ -1,4 +1,9 @@
-const library = [];
+const library = 
+[
+    new Book('J R. R. Tolkien', 'The Hobbit', '394', 'Completed', crypto.randomUUID()),
+    new Book('Orson Scott Card', "Ender's Game", '324', 'Not Completed', crypto.randomUUID()),
+    new Book('Jeff Smith', 'Bone: The Complete Cartoon Epic in One Volume', '1360', 'Completed', crypto.randomUUID())
+];
 
 function Book(author, title, pages, status,id) {
     if (!new.target) {
