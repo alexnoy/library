@@ -78,6 +78,11 @@ form.addEventListener('submit', function(event) {
     removeBook();
 });
 
+document.addEventListener('DOMContentLoaded', () => {
+    displayBook();
+    removeBook();
+});
+
 const bookCards = document.getElementsByClassName('books');
 const removeButton = document.getElementsByClassName('remove');
 
