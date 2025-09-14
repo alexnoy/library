@@ -89,11 +89,13 @@ form.addEventListener('submit', function(event) {
     form.reset();
     displayBook();
     removeBook();
+    changeStatus();
 });
 
 document.addEventListener('DOMContentLoaded', () => {
     displayBook();
     removeBook();
+    changeStatus();
 });
 
 const bookCards = document.getElementsByClassName('books');
@@ -113,5 +115,29 @@ function removeBook() {
                 }
             });
         }
+    }
+}
+
+const buttonStatus = document.getElementsByClassName('change');
+const statusElement = document.getElementsByClassName('status');
+
+function changeStatus() {
+    for (const button of buttonStatus) {
+        button.addEventListener('click', function() {
+            for (card of bookCards) {
+                if (card.dataset.id === button.parentElement.dataset.id) {
+                    for (const book of library) {
+                        if (book.id === card.dataset.id) {
+                            book.statusChange(book);
+                            for (const element of statusElement) {
+                                if (element.parentElement.dataset.id === card.dataset.id) {
+                                    element.textContent = `Status: ${book.status}`;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        });
     }
 }
