@@ -16,6 +16,14 @@ function Book(author, title, pages, status,id) {
     this.id = id;
 }
 
+Book.prototype.statusChange = function(book) {
+    if (book.status === 'Completed') {
+        book.status = 'Not Completed';
+    } else {
+        book.status = 'Completed';
+    }
+}
+
 function addBookToLibrary(author, title, pages, status) {
     let newBook = new Book(author, title, pages, status, crypto.randomUUID());
     library.push(newBook);
@@ -36,14 +44,16 @@ function displayBook() {
             const statusButton = document.createElement('button');
             statusButton.classList.add('change');
             for (const info in book) {
-                if (info === 'id') {
-                    continue;
+                if (book.hasOwnProperty(info)) {
+                    if (info === 'id') {
+                        continue;
+                    }
+                    const content = document.createElement('p');
+                    const label = document.createTextNode(`${info.charAt(0).toUpperCase() + info.slice(1)}: `);
+                    const text = document.createTextNode(book[info]);
+                    content.append(label, text);
+                    card.appendChild(content);
                 }
-                const content = document.createElement('p');
-                const label = document.createTextNode(`${info.charAt(0).toUpperCase() + info.slice(1)}: `);
-                const text = document.createTextNode(book[info]);
-                content.append(label, text);
-                card.appendChild(content);
             }
             card.append(removeButton, statusButton);
             bookshelf.appendChild(card);
