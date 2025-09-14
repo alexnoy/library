@@ -123,21 +123,24 @@ const statusElement = document.getElementsByClassName('status');
 
 function changeStatus() {
     for (const button of buttonStatus) {
-        button.addEventListener('click', function() {
-            for (card of bookCards) {
-                if (card.dataset.id === button.parentElement.dataset.id) {
-                    for (const book of library) {
-                        if (book.id === card.dataset.id) {
-                            book.statusChange(book);
-                            for (const element of statusElement) {
-                                if (element.parentElement.dataset.id === card.dataset.id) {
-                                    element.textContent = `Status: ${book.status}`;
+        if (!button.hasAttribute('haseventlistener')) {
+            button.addEventListener('click', function() {
+                for (card of bookCards) {
+                    if (card.dataset.id === button.parentElement.dataset.id) {
+                        for (const book of library) {
+                            if (book.id === card.dataset.id) {
+                                book.statusChange(book);
+                                for (const element of statusElement) {
+                                    if (element.parentElement.dataset.id === card.dataset.id) {
+                                        element.textContent = `Status: ${book.status}`;
+                                    }
                                 }
                             }
                         }
                     }
                 }
-            }
-        });
+            })
+            button.setAttribute('hasEventListener', '');
+        }
     }
 }
