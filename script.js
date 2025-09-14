@@ -33,6 +33,8 @@ function displayBook() {
             card.classList.add('books');
             const removeButton = document.createElement('button');
             removeButton.classList.add('remove');
+            const statusButton = document.createElement('button');
+            statusButton.classList.add('change');
             for (const info in book) {
                 if (info === 'id') {
                     continue;
@@ -43,7 +45,7 @@ function displayBook() {
                 content.append(label, text);
                 card.appendChild(content);
             }
-            card.appendChild(removeButton);
+            card.append(removeButton, statusButton);
             bookshelf.appendChild(card);
         }
     }
