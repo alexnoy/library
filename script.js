@@ -49,6 +49,7 @@ function displayBook() {
                         continue;
                     }
                     const content = document.createElement('p');
+                    content.classList.add(`${info}`);
                     const label = document.createTextNode(`${info.charAt(0).toUpperCase() + info.slice(1)}: `);
                     const text = document.createTextNode(book[info]);
                     content.append(label, text);
