@@ -45,3 +45,19 @@
     order: -1;
     font-size: 26px;
 }
+
+.remove, .change {
+    height: 25px;
+    border: 2px solid #43270F;
+    background-color: beige;
+    flex-shrink: 0;
+}
+
+#showDialog {
+    height: 75px;
+    aspect-ratio: 1 / 1;
+    background-color: #a2714084;
+    color: beige ;
+    border: 2px solid beige;
+    border-radius: 50%;
+}
