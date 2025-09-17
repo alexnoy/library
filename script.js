@@ -39,10 +39,15 @@ function displayBook() {
             const card = document.createElement('div');
             card.setAttribute('data-id', book.id);
             card.classList.add('books');
+
             const removeButton = document.createElement('button');
             removeButton.classList.add('remove');
+            removeButton.textContent = 'Remove';
+
             const statusButton = document.createElement('button');
             statusButton.classList.add('change');
+            statusButton.textContent = 'Change Status';
+
             for (const info in book) {
                 if (book.hasOwnProperty(info)) {
                     if (info === 'id') {
@@ -50,12 +55,12 @@ function displayBook() {
                     }
                     const content = document.createElement('p');
                     content.classList.add(`${info}`);
-                    const label = document.createTextNode(`${info.charAt(0).toUpperCase() + info.slice(1)}: `);
                     const text = document.createTextNode(book[info]);
-                    content.append(label, text);
+                    content.append(text);
                     card.appendChild(content);
                 }
             }
+
             card.append(removeButton, statusButton);
             bookshelf.appendChild(card);
         }
