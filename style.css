@@ -10,10 +10,14 @@
     min-height: 100vh;
     display: grid;
     grid-template-rows: 100px 1fr;
+    background-color: beige;
 }
 
 .header {
     background-color: #43270F;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .library {
@@ -21,16 +25,23 @@
     justify-content: center;
     gap: 25px;
     padding: 25px 250px;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    grid-template-rows: repeat(auto-fit, 150px);
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-rows: repeat(auto-fit, 300px);
 }
 
 .books {
-    background-color: lightgrey;
+    background-color: #a2714084;
+    color: #43270F;
+    border: 2px solid #43270F;
     display: flex;
-    flex-flow: column;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
     gap: 5px;
-    height: 150px;
+    height: 300px;
+    padding: 15px;
+}
+
+.title {
+    order: -1;
+    font-size: 26px;
 }
