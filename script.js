@@ -1,9 +1,4 @@
-const library = 
-[
-    new Book('J R. R. Tolkien', 'The Hobbit', '394', 'Completed', crypto.randomUUID()),
-    new Book('Orson Scott Card', "Ender's Game", '324', 'Not Completed', crypto.randomUUID()),
-    new Book('Jeff Smith', 'Bone: The Complete Cartoon Epic in One Volume', '1360', 'Completed', crypto.randomUUID())
-];
+const library = [];
 
 function Book(author, title, pages, status,id) {
     if (!new.target) {
@@ -97,12 +92,6 @@ form.addEventListener('submit', function(event) {
     changeStatus();
 });
 
-document.addEventListener('DOMContentLoaded', () => {
-    displayBook();
-    removeBook();
-    changeStatus();
-});
-
 const bookCards = document.getElementsByClassName('books');
 const removeButton = document.getElementsByClassName('remove');
 
@@ -137,14 +126,14 @@ function changeStatus() {
                                 book.statusChange(book);
                                 for (const element of statusElement) {
                                     if (element.parentElement.dataset.id === card.dataset.id) {
-                                        element.textContent = `Status: ${book.status}`;
+                                        element.textContent = book.status;
                                     }
                                 }
                             }
                         }
                     }
                 }
-            })
+            });
             button.setAttribute('hasEventListener', '');
         }
     }
