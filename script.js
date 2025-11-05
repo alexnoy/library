@@ -1,21 +1,20 @@
 const library = [];
 
-function Book(author, title, pages, status,id) {
-    if (!new.target) {
-        throw Error("You must use 'new'")
+class Book {
+    constructor(author, title, pages, status, id) {
+        this.author = author;
+        this.title = title;
+        this.pages = pages;
+        this.status = status;
+        this.id = id;
     }
-    this.author = author;
-    this.title = title;
-    this.pages = pages;
-    this.status = status;
-    this.id = id;
-}
 
-Book.prototype.statusChange = function(book) {
-    if (book.status === 'Completed') {
-        book.status = 'Not Completed';
-    } else {
-        book.status = 'Completed';
+    statusChange() {
+        if (this.status === 'Completed') {
+        this.status = 'Not Completed';
+        } else {
+        this.status = 'Completed';
+        }
     }
 }
 
@@ -123,7 +122,7 @@ function changeStatus() {
                     if (card.dataset.id === button.parentElement.dataset.id) {
                         for (const book of library) {
                             if (book.id === card.dataset.id) {
-                                book.statusChange(book);
+                                book.statusChange();
                                 for (const element of statusElement) {
                                     if (element.parentElement.dataset.id === card.dataset.id) {
                                         element.textContent = book.status;
